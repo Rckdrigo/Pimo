@@ -2,21 +2,21 @@
 using System.Collections;
 
 #region REQUIERED_COMPONENTS
-[RequireComponent (typeof (Rigidbody2D))]
+/*[RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent (typeof (SpriteRenderer))]
 [RequireComponent (typeof (Animator))]
-[RequireComponent (typeof (Collider2D))]
+[RequireComponent (typeof (Collider2D))]*/
 #endregion
 public abstract class Character2D : MonoBehaviour {
 	#region PUBLIC_ATTRIBUTES
 	public float _speed;
+	public Vector2 _dir;
 
 	#endregion
 
 	#region INSIDE_INHERITED_MEMBERS
 	protected float _width;
 	protected float _height;
-	protected Vector2 _dir;
 	protected bool _onGround;
 	protected Vector2 _midFrontVector;
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ShootingEnemyIA : Character2D {
@@ -19,7 +19,6 @@ public class ShootingEnemyIA : Character2D {
 			if (poolCount >= bulletPool.Length)
 				poolCount = 0;
 
-
 			if(isInRange){
 				shoot ();
 				yield return new WaitForSeconds (bulletDelay);
@@ -30,22 +29,22 @@ public class ShootingEnemyIA : Character2D {
 	}
 
 	void shoot(){
-		print ("Shoot");
+		//print ("Shoot");
 		bulletPool [poolCount].transform.position = _midFrontVector;
 		bulletPool [poolCount].renderer.enabled = true;
 		bulletPool [poolCount].GetComponent<BulletBehaviour> ().dir = _dir;
-		print (poolCount);
-
+		//print (poolCount);
 		poolCount++;
 	}
 
 	// Use this for initialization
 	void Start () {
 		bulletPool = GameObject.FindGameObjectsWithTag ("bullet");
-		print (bulletPool.Length);
+		//print (bulletPool.Length);
 		poolCount = 0;
 
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("Tim");
+		print (player.name+" "+player.transform.position);
 		_dir = Vector2.right;
 
 		StartCoroutine (shootSequence ());
@@ -63,7 +62,8 @@ public class ShootingEnemyIA : Character2D {
 		base.Update ();
 		followWithSight();
 
-		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 2.5f)
+		print (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 1.5f);
+		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 1.5f)
 			isInRange = true;	
 		else
 			isInRange = false;
