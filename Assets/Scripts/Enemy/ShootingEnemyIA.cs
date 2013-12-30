@@ -11,9 +11,15 @@ public class ShootingEnemyIA : Character2D {
 
 	private GameObject player;
 	private bool isInRange;
+	private GameObject[] bulletPool;
+	private int poolCount;
 
 	IEnumerator shootSequence(){
 		for (int i = 0; i < nBullet; i++) {
+			if (poolCount >= bulletPool.Length)
+				poolCount = 0;
+
+
 			if(isInRange){
 				shoot ();
 				yield return new WaitForSeconds (bulletDelay);
@@ -25,11 +31,20 @@ public class ShootingEnemyIA : Character2D {
 
 	void shoot(){
 		print ("Shoot");
-		Instantiate (prefab,_midFrontVector,Quaternion.LookRotation(_dir));
+		bulletPool [poolCount].transform.position = _midFrontVector;
+		bulletPool [poolCount].renderer.enabled = true;
+		bulletPool [poolCount].GetComponent<BulletBehaviour> ().dir = _dir;
+		print (poolCount);
+
+		poolCount++;
 	}
 
 	// Use this for initialization
 	void Start () {
+		bulletPool = GameObject.FindGameObjectsWithTag ("bullet");
+		print (bulletPool.Length);
+		poolCount = 0;
+
 		player = GameObject.FindGameObjectWithTag ("Player");
 		_dir = Vector2.right;
 
@@ -37,12 +52,6 @@ public class ShootingEnemyIA : Character2D {
 	}
 
 	void followWithSight(){
-		print (Mathf.Abs (player.transform.position.y - transform.position.y) );
-		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 3.0f)
-			isInRange = true;	
-		else
-			isInRange = false;
-
 		if (Mathf.Sign (player.transform.position.x - transform.position.x) != Mathf.Sign (_dir.x)) {
 			_dir.x *= -1;
 			_flipH();
@@ -53,5 +62,10 @@ public class ShootingEnemyIA : Character2D {
 	void Update () {
 		base.Update ();
 		followWithSight();
+
+		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 2.5f)
+			isInRange = true;	
+		else
+			isInRange = false;
 	}
 }
