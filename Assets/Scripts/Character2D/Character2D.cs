@@ -10,6 +10,7 @@ using System.Collections;
 public abstract class Character2D : MonoBehaviour {
 	#region PUBLIC_ATTRIBUTES
 	public float _speed;
+
 	#endregion
 
 	#region INSIDE_INHERITED_MEMBERS
@@ -17,15 +18,16 @@ public abstract class Character2D : MonoBehaviour {
 	protected float _height;
 	protected Vector2 _dir;
 	protected bool _onGround;
-	protected Vector2 midFrontVector;
+	protected Vector2 _midFrontVector;
 
 	/// <summary>
 	/// Calculating all the attributes that are usefull for all kind of interaction
 	/// Such as: width, height, onGround
 	/// </summary>
+
 	protected void Update () {
 		resizeBoxCollider ();
-		midFrontVector = frontalVector ();
+		_midFrontVector = frontalVector ();
 		_onGround = isOnGround ();
 		_width =  renderer.bounds.size.x;
 		_height =  renderer.bounds.size.y;

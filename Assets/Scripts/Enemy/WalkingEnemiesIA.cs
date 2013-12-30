@@ -17,7 +17,7 @@ public class WalkingEnemiesIA : Character2D {
 
 	private void searchFrontalCollision(){
 		Collider2D[] results;
-		foreach (Collider2D collider in Physics2D.OverlapPointAll(midFrontVector)) {
+		foreach (Collider2D collider in Physics2D.OverlapPointAll(_midFrontVector)) {
 			if(collider.gameObject!= gameObject){
 				//print (collider.name);
 				_dir.x *= -1;

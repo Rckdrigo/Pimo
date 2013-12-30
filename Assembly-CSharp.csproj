@@ -46,9 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PlayerLocomotion.cs" />
      <Compile Include="Assets\Scripts\Character2D\Character2D.cs" />
      <Compile Include="Assets\Scripts\Enemy\ShootingEnemyIA.cs" />
      <Compile Include="Assets\Scripts\Enemy\WalkingEnemiesIA.cs" />
+     <Compile Include="Assets\bulletBehaviour.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
