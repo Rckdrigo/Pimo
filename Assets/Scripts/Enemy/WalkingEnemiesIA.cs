@@ -18,10 +18,13 @@ public class WalkingEnemiesIA : Character2D {
 	private void searchFrontalCollision(){
 		Collider2D[] results;
 		foreach (Collider2D collider in Physics2D.OverlapPointAll(_midFrontVector)) {
-			if(collider.gameObject!= gameObject){
-				//print (collider.name);
-				_dir.x *= -1;
-				_flipH();
+			if (collider.gameObject != gameObject) {
+				print(collider.gameObject.tag != gameObject.tag);
+				if (collider.gameObject.layer != gameObject.layer) {
+					//print (collider.name);
+					_dir.x *= -1;
+					_flipH ();
+				}
 			}
 		}
 	}
