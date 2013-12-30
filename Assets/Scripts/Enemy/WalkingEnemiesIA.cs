@@ -19,7 +19,7 @@ public class WalkingEnemiesIA : Character2D {
 		Collider2D[] results;
 		foreach (Collider2D collider in Physics2D.OverlapPointAll(midFrontVector)) {
 			if(collider.gameObject!= gameObject){
-				print (collider.name);
+				//print (collider.name);
 				_dir.x *= -1;
 				_flipH();
 			}

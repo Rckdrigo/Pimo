@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{3A0D39BE-E3E0-49CA-5C44-73E009A3F299}</ProjectGuid>
+	<ProjectGuid>{3C9F403F-10DB-A495-C831-FC1927268DD1}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -47,7 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Character2D\Character2D.cs" />
-     <Compile Include="Assets\Scripts\WalkingEnemiesIA.cs" />
+     <Compile Include="Assets\Scripts\Enemy\ShootingEnemyIA.cs" />
+     <Compile Include="Assets\Scripts\Enemy\WalkingEnemiesIA.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
