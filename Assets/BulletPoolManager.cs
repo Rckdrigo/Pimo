@@ -14,13 +14,16 @@ public class BulletPoolManager:MonoBehaviour{
 
 	public static GameObject getBullet(){
 		int temp;
-		if (index <= nBullets) {
+		print (index);
+		if (index < nBullets) {
 			temp = index;
 			index++;
-		} else
+		} else {
 			index = 0;
+			temp = index;
+		}
 		
-		bullet[temp].GetComponent<BulletBehaviour>().active = true;
+		//bullet[temp].GetComponent<BulletBehaviour>().active = true;
 		return bullet[temp];
 	}
 }

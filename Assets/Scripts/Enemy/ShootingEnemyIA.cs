@@ -29,6 +29,11 @@ public class ShootingEnemyIA : StaticCharacter2D {
 		anim.SetTrigger ("Shoot");
 	}
 
+	void throwBullet(){
+		print ("BAM");
+		BulletPoolManager.getBullet ();
+	}
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -48,6 +53,7 @@ public class ShootingEnemyIA : StaticCharacter2D {
 	// Update is called once per frame
 	void Update () {
 		base.Update ();
+
 		followWithSight();
 		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height*1.5f)
 			isInRange = true;	
