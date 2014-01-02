@@ -10,8 +10,10 @@ public abstract class Character2D : MonoBehaviour {
 	protected float _height;
 	protected bool _onGround;
 	protected Vector2 _midFrontVector;
+	protected bool facingRight = true;
 	
 	protected void _flipH(){
+		facingRight = !facingRight;
 		Vector2 temp = transform.localScale;
 		transform.localScale = new Vector2(temp.x*-1,temp.y);
 	}

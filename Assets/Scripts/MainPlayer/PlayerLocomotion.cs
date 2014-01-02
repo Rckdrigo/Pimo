@@ -11,8 +11,9 @@ public class PlayerLocomotion : PlayableCharacter {
 	// Update is called once per frame
 	void Update () {
 		base.Update ();
-
-		if (Input.GetButtonDown ("Jump"))
+		if (Input.GetButtonDown ("Jump") && _onGround)
 			jump ();
+
+		_dir.x = Input.GetAxis ("Horizontal");
 	}
 }

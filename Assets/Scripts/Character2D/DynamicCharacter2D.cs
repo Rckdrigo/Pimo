@@ -10,13 +10,20 @@ public abstract class DynamicCharacter2D : Character2D {
 	public LayerMask _groundLayer;
 	#endregion
 
-	protected void Update(){
+	protected void Update(){	
 		_dir.Normalize ();
+
+		if(_dir.x > 0 && !facingRight)
+			_flipH ();
+		else if(_dir.x < 0 && facingRight)
+			_flipH ();
+
 		_resizeBoxCollider ();
 		_midFrontVector = frontalVector ();
 		_onGround = isOnGround ();
 		_width =  renderer.bounds.size.x;
 		_height =  renderer.bounds.size.y;
+		rigidbody2D.fixedAngle = true;
 	}
 
 	private Vector2 frontalVector(){

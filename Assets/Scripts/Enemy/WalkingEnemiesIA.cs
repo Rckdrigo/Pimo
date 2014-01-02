@@ -22,10 +22,8 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 	private void searchFrontalCollision(){
 		foreach (Collider2D collider in Physics2D.OverlapPointAll(_midFrontVector)) {
 			if (collider.gameObject != gameObject) {
-				if (collider.gameObject.layer != gameObject.layer) {
+				if (collider.gameObject.layer != gameObject.layer) 
 					_dir.x *= -1;
-					_flipH ();
-				}
 			}
 		}
 	}
@@ -46,11 +44,9 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 			if (_onGround) {
 				if (!onEdge)
 						transform.Translate (Vector3.right * Time.deltaTime * _speed * _dir.x, Space.World);
-
-				else {
+				else 
 						_dir.x *= -1;
-						_flipH();
-				}
+
 			}
 			break;
 		
