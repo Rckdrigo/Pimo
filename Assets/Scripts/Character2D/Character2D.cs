@@ -22,10 +22,8 @@ public abstract class Character2D : MonoBehaviour {
 	}
 	
 	protected void Update (){
-		print (_height);
 	}
 	#endregion 
-	
 	#region INTERNAL_PROCESS
 	/// <summary>
 	/// Resizes the box collider each frame

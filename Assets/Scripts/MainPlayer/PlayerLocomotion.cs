@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerLocomotion : Character2D {
+public class PlayerLocomotion : PlayableCharacter {
 
 	// Use this for initialization
 	void Start () {
@@ -11,5 +11,8 @@ public class PlayerLocomotion : Character2D {
 	// Update is called once per frame
 	void Update () {
 		base.Update ();
+
+		if (Input.GetButtonDown ("Jump"))
+			jump ();
 	}
 }

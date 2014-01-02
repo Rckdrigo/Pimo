@@ -14,7 +14,6 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 			Collider2D ground = Physics2D.OverlapCircle (temp, _height * 0.1f, _groundLayer);
 			if(ground != null)
 				return false;
-			print ("En la orilla");
 			return true;
 		}
 		return false;
@@ -40,7 +39,7 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 	void Update(){
 		base.Update ();
 
-		print (_onGround);
+	//	print (_onGround);
 		//Searching for platform edge
 		switch (type) {
 		case TYPE.A:

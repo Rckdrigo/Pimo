@@ -14,7 +14,6 @@ public class BulletPoolManager:MonoBehaviour{
 
 	public static GameObject getBullet(){
 		int temp;
-		print (index);
 		if (index < nBullets) {
 			temp = index;
 			index++;

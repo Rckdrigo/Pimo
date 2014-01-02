@@ -30,7 +30,7 @@ public class ShootingEnemyIA : StaticCharacter2D {
 	}
 
 	void throwBullet(){
-		print ("BAM");
+		//print ("BAM");
 		BulletPoolManager.getBullet ();
 	}
 
