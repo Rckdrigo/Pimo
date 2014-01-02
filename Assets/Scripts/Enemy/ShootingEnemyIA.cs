@@ -1,24 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class ShootingEnemyIA : Character2D {
+public class ShootingEnemyIA : StaticCharacter2D {
 
 	public int nBullet;
 	public float bulletDelay;
 	public float sequenceDelay;
 
-	public Transform prefab;
-
 	private GameObject player;
 	private bool isInRange;
 	private GameObject[] bulletPool;
 	private int poolCount;
+	private Animator anim;
+
 
 	IEnumerator shootSequence(){
 		for (int i = 0; i < nBullet; i++) {
-			if (poolCount >= bulletPool.Length)
-				poolCount = 0;
-
 			if(isInRange){
 				shoot ();
 				yield return new WaitForSeconds (bulletDelay);
@@ -29,22 +26,13 @@ public class ShootingEnemyIA : Character2D {
 	}
 
 	void shoot(){
-		//print ("Shoot");
-		bulletPool [poolCount].transform.position = _midFrontVector;
-		bulletPool [poolCount].renderer.enabled = true;
-		bulletPool [poolCount].GetComponent<BulletBehaviour> ().dir = _dir;
-		//print (poolCount);
-		poolCount++;
+		anim.SetTrigger ("Shoot");
 	}
 
 	// Use this for initialization
 	void Start () {
-		bulletPool = GameObject.FindGameObjectsWithTag ("bullet");
-		//print (bulletPool.Length);
-		poolCount = 0;
-
-		player = GameObject.Find ("Tim");
-		print (player.name+" "+player.transform.position);
+		anim = GetComponent<Animator> ();
+		player = GameObject.FindWithTag ("Player");
 		_dir = Vector2.right;
 
 		StartCoroutine (shootSequence ());
@@ -61,9 +49,7 @@ public class ShootingEnemyIA : Character2D {
 	void Update () {
 		base.Update ();
 		followWithSight();
-
-		print (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 1.5f);
-		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height * 1.5f)
+		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height*1.5f)
 			isInRange = true;	
 		else
 			isInRange = false;

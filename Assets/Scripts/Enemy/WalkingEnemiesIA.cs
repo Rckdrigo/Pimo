@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WalkingEnemiesIA : Character2D {
+public class WalkingEnemiesIA : DynamicCharacter2D {
 
 	public enum TYPE{A,B}
 	public TYPE type;
-	private bool inEdge;
+	private bool onEdge;
 
 	private bool searchEdge(){
-		Vector3 temp = new Vector3 (transform.position.x + _width/2 * _dir.x, 
-		                            transform.position.y, transform.position.z);
-		if (Physics2D.Raycast (temp, -Vector2.up,_height*0.1f)) 
-			return false;
-		return true;
+		if (_onGround) {
+			Vector3 temp = new Vector3 (transform.position.x + _width / 2 * _dir.x, 
+                    transform.position.y, transform.position.z);
+			Collider2D ground = Physics2D.OverlapCircle (temp, _height * 0.1f, _groundLayer);
+			if(ground != null)
+				return false;
+			print ("En la orilla");
+			return true;
+		}
+		return false;
 	}
 
 	private void searchFrontalCollision(){
 		foreach (Collider2D collider in Physics2D.OverlapPointAll(_midFrontVector)) {
 			if (collider.gameObject != gameObject) {
-				//print(collider.gameObject.tag != gameObject.tag);
 				if (collider.gameObject.layer != gameObject.layer) {
-					//print (collider.name);
 					_dir.x *= -1;
 					_flipH ();
 				}
@@ -30,18 +33,19 @@ public class WalkingEnemiesIA : Character2D {
 
 	// Use this for initialization
 	void Start () {
-		inEdge = false;
-		//_dir.x = 1;
+		onEdge = false;
+		_dir.x = 1;
 	}
 
 	void Update(){
 		base.Update ();
 
+		print (_onGround);
 		//Searching for platform edge
 		switch (type) {
 		case TYPE.A:
 			if (_onGround) {
-				if (!inEdge)
+				if (!onEdge)
 						transform.Translate (Vector3.right * Time.deltaTime * _speed * _dir.x, Space.World);
 
 				else {
@@ -58,7 +62,7 @@ public class WalkingEnemiesIA : Character2D {
 	}
 
 	void LateUpdate () {
-		inEdge = searchEdge ();
+		onEdge = searchEdge ();
 		searchFrontalCollision ();
 	}
 
