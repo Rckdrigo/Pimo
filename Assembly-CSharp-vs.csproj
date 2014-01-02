@@ -48,7 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Character2D\Character2D.cs" />
      <Compile Include="Assets\Scripts\Character2D\DynamicCharacter2D.cs" />
-     <Compile Include="Assets\Scripts\Character2D\PlayableCharacter.cs" />
+     <Compile Include="Assets\Scripts\Character2D\PlayablePlatformCharacter.cs" />
      <Compile Include="Assets\Scripts\Character2D\StaticCharacter2D.cs" />
      <Compile Include="Assets\Scripts\Enemy\Props\BulletBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemy\Props\BulletPoolManager.cs" />

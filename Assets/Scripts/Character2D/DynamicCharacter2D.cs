@@ -6,9 +6,10 @@ using System.Collections;
 public abstract class DynamicCharacter2D : Character2D {
 	#region PUBLIC_ATTRIBUTES
 	public float _speed;
-	public Vector2 _dir;
 	public LayerMask _groundLayer;
 	#endregion
+
+	protected Vector2 _dir;
 
 	protected void Update(){	
 		_dir.Normalize ();

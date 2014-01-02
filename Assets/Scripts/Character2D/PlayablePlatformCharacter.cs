@@ -7,7 +7,6 @@ public class PlayableCharacter : DynamicCharacter2D {
 	public bool falling;
 
 	public float _jumpSpeed;
-
 	protected void jump(){
 		rigidbody2D.velocity = Vector2.up * _jumpSpeed * 10 * Time.deltaTime;
 	}
