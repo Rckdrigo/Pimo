@@ -33,7 +33,7 @@ public abstract class DynamicCharacter2D : Character2D {
 	}
 
 	private Vector2 frontalVector(){
-		return new Vector2 (transform.position.x + _width/2 * _dir.x, transform.position.y + _height/2);
+		return new Vector2 (transform.position.x + _width/2 * (facingRight ? 1 : -1), transform.position.y + _height/2);
 	}
 		
 	/// <summary>
@@ -41,7 +41,7 @@ public abstract class DynamicCharacter2D : Character2D {
 	/// </summary>
 	/// <returns><c>true</c>, if raycast detects collision under the sprite, <c>false</c> otherwise.</returns>
 	private bool isOnGround(){
-		Collider2D ground = Physics2D.OverlapCircle (transform.position, _width * 0.15f, _groundLayer);
+		Collider2D ground = Physics2D.OverlapCircle (transform.position, _width * 0.2f, _groundLayer);
 		if(ground != null)
 			return true;
 		return false;

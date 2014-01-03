@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerLocomotion : PlayableCharacter {
+public class PlayerController : PlayableCharacter {
 
+	public Transform prefab;
 	private Animator anim;
 
 	// Use this for initialization
@@ -14,17 +15,23 @@ public class PlayerLocomotion : PlayableCharacter {
 	void Update () {
 		base.Update ();
 
+		anim.SetBool ("Falling", _falling);
+
 		if (Random.Range (0, 1000) < 10)
 			anim.SetTrigger ("Wink");
 
-		anim.SetBool ("Falling", _falling);
-
+		_dir.x = Input.GetAxis ("Horizontal");
+		anim.SetFloat ("Speed",Mathf.Abs(_dir.x));
 		if (Input.GetButtonDown ("Jump") && _onGround) {
 			jump ();
 			anim.SetTrigger("Jump");	
 		}
+		if (Input.GetButtonDown ("Fire1"))
+			anim.SetTrigger ("Create");
+	}
 
-		_dir.x = Input.GetAxis ("Horizontal");
-		anim.SetFloat ("Speed",Mathf.Abs(_dir.x));
+	void createWall(){
+		print ("Creando paredes");
+		Instantiate (prefab,_midFrontVector,Quaternion.identity);
 	}
 }
