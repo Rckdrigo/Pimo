@@ -30,12 +30,13 @@ public abstract class Character2D : MonoBehaviour {
 	/// <summary>
 	/// Resizes the box collider each frame
 	/// </summary>
-	protected void _resizeBoxCollider(){
+	protected void _resizeBoxCollider(Vector2 colliderOffset,Vector2 colliderScale){
 		switch (collider2D.GetType ().ToString ()) {
 		case "UnityEngine.BoxCollider2D":
 			BoxCollider2D box = GetComponent<BoxCollider2D>();
-			Vector3 size = new Vector3(_width,_height);
+			Vector2 size = new Vector2(_width * colliderScale.x,_height * colliderScale.y);
 			box.size = size;
+			box.center = new Vector2(0 + colliderOffset.x,_height/2 + colliderOffset.y);
 			break;
 		
 		case "UnityEngine.CircleCollider2D":

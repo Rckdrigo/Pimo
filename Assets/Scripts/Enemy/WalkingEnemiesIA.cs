@@ -51,8 +51,9 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 			break;
 		
 		case TYPE.B:
-				transform.Translate (Vector3.right * Time.deltaTime * _speed * _dir.x, Space.World);
-				break;
+			transform.Translate (Vector3.right * Time.deltaTime * _speed * _dir.x, Space.World);
+		
+			break;
 		}
 	}
 

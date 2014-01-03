@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CharacterActions.cs" />
      <Compile Include="Assets\Scripts\Character2D\Character2D.cs" />
      <Compile Include="Assets\Scripts\Character2D\DynamicCharacter2D.cs" />
      <Compile Include="Assets\Scripts\Character2D\PlayablePlatformCharacter.cs" />

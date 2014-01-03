@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayableCharacter : DynamicCharacter2D {	
 	[HideInInspector]
-	public bool falling;
+	protected bool _falling;
 
 	public float _jumpSpeed;
 	protected void jump(){
@@ -12,9 +12,14 @@ public class PlayableCharacter : DynamicCharacter2D {
 	}
 
 	protected void Update(){
-		base.Update ();	
+		base.Update ();
+		rigidbody2D.gravityScale = 0;
+		rigidbody2D.velocity -= Vector2.up * 9.8f * Time.deltaTime;
 		if (rigidbody2D.velocity.y < 0 && !_onGround)
-			falling = true;
+				_falling = true;
+		else 
+				_falling = false;
+
 
 		transform.Translate (_dir * _speed * Time.deltaTime);
 	}
