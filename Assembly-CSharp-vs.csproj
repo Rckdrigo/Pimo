@@ -55,6 +55,12 @@
      <Compile Include="Assets\Scripts\Enemy\ShootingEnemyIA.cs" />
      <Compile Include="Assets\Scripts\Enemy\WalkingEnemiesIA.cs" />
      <Compile Include="Assets\Scripts\MainPlayer\PlayerController.cs" />
+     <None Include="Assets\Cutaway.shader" />
+     <None Include="Assets\DiffuseLighting.shader" />
+     <None Include="Assets\FractalShader.shader" />
+     <None Include="Assets\Minimal.shader" />
+     <None Include="Assets\RGBCube.shader" />
+     <None Include="Assets\CG_Defines.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
