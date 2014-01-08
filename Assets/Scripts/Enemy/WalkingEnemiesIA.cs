@@ -34,7 +34,7 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 		_dir.x = 1;
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		base.Update ();
 
 	//	print (_onGround);

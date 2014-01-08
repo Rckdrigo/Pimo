@@ -12,7 +12,7 @@ public class PlayerController : PlayableCharacter {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		base.Update ();
 
 		anim.SetBool ("Falling", _falling);

@@ -41,7 +41,7 @@ public abstract class DynamicCharacter2D : Character2D {
 	/// </summary>
 	/// <returns><c>true</c>, if raycast detects collision under the sprite, <c>false</c> otherwise.</returns>
 	private bool isOnGround(){
-		Collider2D ground = Physics2D.OverlapCircle (transform.position, _width * 0.2f, _groundLayer);
+		Collider2D ground = Physics2D.OverlapCircle (transform.position, _width * 0.3f, _groundLayer);
 		if(ground != null)
 			return true;
 		return false;
