@@ -23,7 +23,7 @@ public abstract class Character2D : MonoBehaviour {
 		transform.localScale = new Vector2(temp.x,temp.y*-1);
 	}
 	
-	protected void Update (){
+	protected void FixedUpdate (){
 	}
 	#endregion 
 	#region INTERNAL_PROCESS

@@ -51,8 +51,8 @@ public class ShootingEnemyIA : StaticCharacter2D {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		base.Update ();
+	void FixedUpdate () {
+		base.FixedUpdate ();
 
 		followWithSight();
 		if (Mathf.Abs (player.transform.position.y - transform.position.y) < _height*1.5f)

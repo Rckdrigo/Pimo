@@ -19,15 +19,6 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 		return false;
 	}
 
-	private void searchFrontalCollision(){
-		foreach (Collider2D collider in Physics2D.OverlapPointAll(_midFrontVector)) {
-			if (collider.gameObject != gameObject) {
-				if (collider.gameObject.layer != gameObject.layer) 
-					_dir.x *= -1;
-			}
-		}
-	}
-
 	// Use this for initialization
 	void Start () {
 		onEdge = false;
@@ -35,9 +26,8 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 	}
 
 	void FixedUpdate(){
-		base.Update ();
+		base.FixedUpdate ();
 
-	//	print (_onGround);
 		//Searching for platform edge
 		switch (type) {
 		case TYPE.A:
@@ -57,9 +47,17 @@ public class WalkingEnemiesIA : DynamicCharacter2D {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D collision){
+		foreach (ContactPoint2D contact in collision.contacts) {
+			if(Vector2.Dot(contact.normal, _dir) < 0){
+				_dir.x *= -1;
+			}
+		}
+	}
+
 	void LateUpdate () {
 		onEdge = searchEdge ();
-		searchFrontalCollision ();
+		//searchFrontalCollision ();
 	}
 
 }

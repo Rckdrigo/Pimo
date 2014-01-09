@@ -5,7 +5,7 @@ using System.Collections;
 public abstract class StaticCharacter2D : Character2D {
 
 	protected Vector2 _dir;
-	protected void Update(){
+	protected void FixedUpdate(){
 		_dir.Normalize ();
 		
 		_width =  renderer.bounds.size.x;
